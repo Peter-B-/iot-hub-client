@@ -12,7 +12,7 @@ namespace IotHubClient
         public string? ConnectionString { get; set; }
 
         [Description(
-            "TransportType used by the library.\r\nSupported: Amqp, Http1,Amqp_WebSocket_Only, Amqp_Tcp_Only, Mqtt, Mqtt_WebSocket_Only, Mqtt_Tcp_Only")]
+            "TransportType used by the library.\r\nSupported: Amqp, Http1, Amqp_WebSocket_Only, Amqp_Tcp_Only, Mqtt, Mqtt_WebSocket_Only, Mqtt_Tcp_Only")]
         [CommandOption("-t|--transportType")]
         [DefaultValue(typeof(TransportType), "Amqp")]
         public TransportType TransportType { get; set; }

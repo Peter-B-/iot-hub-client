@@ -11,7 +11,7 @@ Have you ever felt the need to test an IoT Hub connection? This is a simple cons
     .\IotHubClient.exe "HostName=test-hub.azure-devices.net;DeviceId=TestDevice;SharedAccessKey=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
     ```
 
-That's it. The program will run and send every message every minute or whenever you hit the space key.
+That's it. The program will run and send one message every minute (by default) or whenever you hit the space key.
 
 ![IoTDeviceClient in action](readme/program-running.png)
 
@@ -38,7 +38,7 @@ ARGUMENTS:
 OPTIONS:
     -h, --help             Prints help information
     -t, --transportType    TransportType used by the library.
-                           Supported: Amqp, Http1,Amqp_WebSocket_Only, Amqp_Tcp_Only, Mqtt, Mqtt_WebSocket_Only, Mqtt_Tcp_Only
+                           Supported: Amqp, Http1, Amqp_WebSocket_Only, Amqp_Tcp_Only, Mqtt, Mqtt_WebSocket_Only, Mqtt_Tcp_Only
     -d, --delay            Delay between consecutive messages
 
 ```
