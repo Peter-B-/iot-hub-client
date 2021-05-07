@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using Microsoft.Azure.Devices.Client;
 using Spectre.Console.Cli;
 
@@ -15,5 +16,11 @@ namespace IotHubClient
         [CommandOption("-t|--transportType")]
         [DefaultValue(typeof(TransportType), "Amqp")]
         public TransportType TransportType { get; set; }
+
+
+        [Description("Delay between consecutive messages")]
+        [CommandOption("-d|--delay")]
+        [DefaultValue(typeof(TimeSpan), "0:01:00")]
+        public TimeSpan InterMessageDelay { get; set; }
     }
 }
