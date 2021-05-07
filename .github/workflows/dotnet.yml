@@ -1,10 +1,9 @@
-name: .NET
+name: Create a release
 
-on:
+on: 
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    tags:
+    - '*'
 
 jobs:
   build:
@@ -28,6 +27,6 @@ jobs:
     - name: Create Release
       uses: ncipollo/release-action@v1.8.4
       with:
-        artifacts: "publish/normal/*,publish/selfcontained/*"
+        artifacts: "publish/normal/IotHubClient.exe,publish/selfcontained/IotHubClient.exe"
         token: ${{ secrets.GITHUB_TOKEN }}
       
