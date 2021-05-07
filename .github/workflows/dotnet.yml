@@ -1,0 +1,33 @@
+name: .NET
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore --configuration Release
+    - name: Publish normal
+      run: dotnet publish -r win-x64 -c Release  --self-contained=false /p:PublishSingleFile=true -o publish/normal  
+    - name: Publish selfcontained  
+      run: dotnet publish -r win-x64 -c Release /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o publish/selfcontained 
+    - name: Create Release
+      uses: ncipollo/release-action@v1.8.4
+      with:
+        artifacts: "publish/normal/*,publish/selfcontained/*"
+        token: ${{ secrets.GITHUB_TOKEN }}
+      
