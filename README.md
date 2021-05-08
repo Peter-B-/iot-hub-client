@@ -4,7 +4,7 @@ Have you ever felt the need to test an IoT Hub connection? This is a simple cons
 
 ## How do I get it?
 
-You can download the tool from the [Releases](/releases) or download the source code and run `dotnet build`.
+You can download the tool from the [Releases](https://github.com/Peter-B-/iot-hub-client/releases/latest) or download the source code and run `dotnet build`.
 
 ## How do I use it?
 
