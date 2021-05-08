@@ -12,22 +12,35 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+
     - name: Restore dependencies
       run: dotnet restore
+
     - name: Build
       run: dotnet build --no-restore --configuration Release
+
     - name: Publish normal
       run: dotnet publish --no-restore -r win-x64 -c Release  --self-contained=false /p:PublishSingleFile=true -o publish/normal  
 
     - name: Publish selfcontained  
       run: dotnet publish --no-restore -r win-x64 -c Release /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o publish/selfcontained 
+
+    - name: Zip selfcontained    
+      uses: papeloto/action-zip@v1
+      with:
+        files: publish/selfcontained/IotHubClient.exe
+        dest: selfcontained.zip
+
     - name: Create Release
       uses: ncipollo/release-action@v1.8.4
       with:
-        artifacts: "publish/normal/IotHubClient.exe,publish/selfcontained/IotHubClient.exe"
+        artifacts: "publish/normal/IotHubClient.exe,selfcontained.zip"
+        bodyFile: "release.md"
+        allowUpdates: true
         token: ${{ secrets.GITHUB_TOKEN }}
       
