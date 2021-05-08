@@ -2,6 +2,10 @@
 
 Have you ever felt the need to test an IoT Hub connection? This is a simple console program allows you to send messages to an Azure IoT Hub. It is based on [Microsoft.Azure.Devices.Client](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client).
 
+## How do I get it?
+
+You can download the tool from the [Releases](/releases) or download the source code and run `dotnet build`.
+
 ## How do I use it?
 
 1. [Create a IoT Device and get it's connection string](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal#register-a-new-device-in-the-iot-hub)
@@ -24,7 +28,7 @@ It will send UTF8 encoded JSON messages like
 }
 ```
 
-## Configure the client
+## How do I configure it?
 
 Use `--help` to see configuration options:
 ```powershell
